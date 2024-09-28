@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant Example in Hindi</title>
+    <style>
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            background-color: #e9f5e1; /* Soft green background for farming theme */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .voice-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #3b6e3b;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .voice-assistant:hover {
+            background-color: #2a502a;
+        }
+
+        .voice-icon {
+            width: 30px;
+            height: 30px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .response-container {
+            width: 70%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #d4d4d4;
+        }
+
+        .response-container p {
+            font-size: 18px;
+            color: #3b6e3b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="response-container">
+    <h2>Voice Assistant Response</h2>
+    <p id="user-speech">आपकी आवाज़ की प्रतीक्षा हो रही है...</p>
+    <p id="assistant-response"></p>
+</div>
+
+<div class="voice-assistant" onclick="startListening()">
+    <span class="voice-icon">&#x1F399;</span> <!-- Unicode mic icon -->
+</div>
+
+<script>
+    function startListening() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'hi-IN'; // Set to Hindi language
+        recognition.start();
+
+        recognition.onresult = function(event) {
+            const userSpeech = event.results[0][0].transcript;
+            document.getElementById('user-speech').innerText = "आपने कहा: " + userSpeech;
+            respondToUser(userSpeech);
+        };
+
+        recognition.onerror = function(event) {
+            console.log('Error occurred in recognition: ' + event.error);
+        };
+    }
+
+    function respondToUser(input) {
+        let response = "";
+        // Simple keyword-based responses in Hindi
+        if (input.includes("नमस्ते")) {
+            response = "नमस्ते! मैं आपकी किस प्रकार सहायता कर सकता हूँ?";
+        } else if (input.includes("फसल की गुणवत्ता")) {
+            response = "हमारी फसल की गुणवत्ता उच्चतम मानकों को पूरा करती है।";
+        } else if (input.includes("डिलीवरी समय")) {
+            response = "हम समय पर डिलीवरी सुनिश्चित करते हैं।";
+        } else {
+            response = "मुझे यह समझ नहीं आया। कृपया पुनः कोशिश करें।";
+        }
+
+        document.getElementById('assistant-response').innerText = response;
+        speakResponse(response);
+    }
+
+    function speakResponse(text) {
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.lang = 'hi-IN'; // Set to Hindi language
+        window.speechSynthesis.speak(speech);
+    }
+</script>
+
+</body>
+</html>

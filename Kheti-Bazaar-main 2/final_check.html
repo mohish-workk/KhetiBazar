@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Summary and Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contract-details {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contract-details label {
+            font-weight: bold;
+        }
+        .contract-details p {
+            margin: 5px 0;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-footer input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .form-footer button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-footer button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .form-footer button:hover:enabled {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contract Summary and Confirmation</h2>
+        <div class="contract-details">
+            <label>Farmer's Name:</label>
+            <p>Kshitij Nangare</p>
+
+            <label>Farmer's Address:</label>
+            <p>VESIT Room No 515, Chembur</p>
+
+            <label>Farmer's Contact Information:</label>
+            <p>Phone: 1122334455, Email: Kshitij@example.com</p>
+
+            <label>Buyer's Name:</label>
+            <p>Roshan Yadav</p>
+
+            <label>Buyer's Address:</label>
+            <p>456 Market Street, Capital City</p>
+
+            <label>Buyer's Contact Information:</label>
+            <p>Phone: 9988776655, Email: Roshan@example.com</p>
+        </div>
+
+        <h3>Crop Details:</h3>
+        <div class="contract-details">
+            <label>Crop Name:</label>
+            <p>Wheat</p>
+
+            <label>Quantity (in tons):</label>
+            <p>50 Tons</p>
+
+            <label>Quality Standard:</label>
+            <p>Grade A</p>
+
+            <label>Delivery Timeline:</label>
+            <p>On or before September 30, 2024</p>
+
+            <label>Price (per Ton/Total Price):</label>
+            <p>$200 per Ton, Total: $10,000</p>
+
+            <label>Description:</label>
+            <p>Harvested in optimal conditions, stored in dry, cool environment.</p>
+        </div>
+
+        <h3>Terms and Conditions:</h3>
+        <div class="contract-details">
+            <p>1. The Farmer agrees to deliver the crop in accordance with the quality and quantity specified in the contract.</p>
+            <p>2. The Buyer shall make payment within the agreed terms after delivery and inspection of the crop.</p>
+            <p>3. Any disputes arising from this contract shall be resolved through mutual negotiation and, if necessary, legal arbitration under applicable law.</p>
+            <p>4. The Farmer ensures that the crop meets the agreed quality standards at the time of delivery.</p>
+            <p>5. Delivery shall be made on or before the specified timeline, and any delays must be communicated promptly.</p>
+            <p>6. Both parties agree to adhere to the contract terms, failing which the aggrieved party may seek legal recourse.</p>
+        </div>
+
+        <h3>Uploaded Documents:</h3>
+        <div class="contract-details">
+            <p><strong>Aadhar Card:</strong> Uploaded</p>
+            <p><strong>Land Document:</strong> Uploaded</p>
+            <p><strong>Government Generated Farmer ID Proof:</strong> Uploaded</p>
+        </div>
+
+        <div class="form-footer">
+            <input type="checkbox" id="finalAgreeCheckbox">
+            <label for="finalAgreeCheckbox">I have reviewed the contract summary and documents, and agree to proceed.</label>
+            <br><br>
+            <button id="makeContractButton" disabled>Make Contract</button>
+        </div>
+    </div>
+
+    <script>
+        const finalCheckbox = document.getElementById('finalAgreeCheckbox');
+        const makeContractButton = document.getElementById('makeContractButton');
+
+        finalCheckbox.addEventListener('change', function() {
+            makeContractButton.disabled = !this.checked;
+        });
+
+        makeContractButton.addEventListener('click', function() {
+            // Code to handle contract finalization goes here
+            alert('Contract has been successfully created!');
+            // Redirect or handle as needed
+        });
+    </script>
+</body>
+</html>
